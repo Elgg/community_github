@@ -9,14 +9,14 @@ if (!isset($vars['entity']->num_display)) {
 }
 
 $params = array(
-	'internalname' => 'params[num_display]',
+	'name' => 'params[num_display]',
 	'value' => $vars['entity']->num_display,
 	'options' => array(1, 2, 3, 4, 5, 10),
 );
-$dropdown = elgg_view('input/pulldown', $params);
+$dropdown = elgg_view('input/dropdown', $params);
 
 ?>
-<p>
+<div>
 	<?php echo elgg_echo('community_github:widget:number_to_display'); ?>:
 	<?php echo $dropdown; ?>
-</p>
+</div>

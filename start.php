@@ -3,18 +3,18 @@
  * Elgg community site integration with Github
  */
 
-register_elgg_event_handler('init', 'system', 'community_github_init');
+elgg_register_event_handler('init', 'system', 'community_github_init');
 
 function community_github_init() {
 	// add github username to profile
-	register_plugin_hook('profile:fields', 'profile', 'community_github_profile');
-	elgg_extend_view('profile/userdetails', 'github/hack', 1);
+	elgg_register_plugin_hook_handler('profile:fields', 'profile', 'community_github_profile');
+	elgg_extend_view('profile/details', 'github/hack', 1);
 
 	elgg_extend_view('css', 'github/css');
-	add_widget_type('github_repos', elgg_echo('community_github:widget:title'), elgg_echo('community_github:widget:description'));
+	elgg_register_widget_type('github_repos', elgg_echo('community_github:widget:title'), elgg_echo('community_github:widget:description'));
 
 	// do a regular pull of github information
-	register_plugin_hook('cron', 'hourly', 'community_github_pull');
+	elgg_register_plugin_hook_handler('cron', 'hourly', 'community_github_pull');
 }
 
 /**

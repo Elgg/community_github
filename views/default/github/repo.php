@@ -8,9 +8,10 @@
 $name = elgg_view('output/url', array(
 	'text' => $vars['repo']->name,
 	'href' => $vars['repo']->html_url,
+	'is_trusted' => true,
 ));
 $description = $vars['repo']->description;
-$update = sprintf(elgg_echo('community_github:update'), elgg_get_friendly_time($vars['repo']->timestamp));
+$update = elgg_echo('community_github:update', array(elgg_get_friendly_time($vars['repo']->timestamp)));
 $watchers = elgg_view('output/url', array(
 	'text' => $vars['repo']->watchers,
 	'href' => $vars['repo']->html_url . '/watchers',
@@ -22,14 +23,17 @@ $forks = elgg_view('output/url', array(
 	'title' => elgg_echo('community_github:forks'),
 ));
 
-echo <<<HTML
+$header = <<<HTML
 <ul class="github-stats">
 	<li class="github-watchers">$watchers</li>
 	<li class="github-forks">$forks</li>
 </ul>
 <h3>$name</h3>
-<div class="github-body">
+HTML;
+
+$body = <<<HTML
 	<div class="github-description">$description</div>
 	<div class="github-updated-at">$update</div>
-</div>
 HTML;
+
+echo elgg_view_module('github', '', $body, array('header' => $header));

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin_manifest>
-	<field key="author" value="Core developers" />
-	<field key="version" value="0.1" />
-	<field key="description" value="Github integration" />
-	<field key="website" value="http://www.elgg.org/" />
-	<field key="copyright" value="(C) Elgg Foundation 2011" />
-	<field key="license" value="GNU General Public License version 2" />
-	<field key="elgg_version" value="2010030101" />
+<plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
+	<name>Community Github Integration</name>
+	<author>Core developers</author>
+	<version>0.2</version>
+	<description>Adds features from github</description>
+	<website>https://github.com/Elgg/community_github</website>
+	<copyright>(C) Elgg Foundation 2011-2012</copyright>
+	<license>GNU General Public License version 2</license>
+
+	<requires>
+		<type>elgg_release</type>
+		<version>1.8</version>
+	</requires>
+	<requires>
+		<type>php_extension</type>
+		<name>curl</name>
+	</requires>
 </plugin_manifest>
